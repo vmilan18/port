@@ -77,7 +77,7 @@ const playMusic = (track, pause = false) => {
 }
 
 async function displayAlbums() {
-    let a = await fetch(/song/);
+    let a = await fetch(`/song/`);
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -179,7 +179,7 @@ async function main() {
     previous.addEventListener("click", () => {
         currentSong.pause()
         console.log("Previous clicked");
-        
+
         let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0])
         if ((index - 1) >= 0) {
             playMusic(songs[index - 1])
@@ -190,7 +190,7 @@ async function main() {
     next.addEventListener("click", () => {
         currentSong.pause()
         console.log("Next clicked");
-        
+
 
 
         let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0])
@@ -203,8 +203,8 @@ async function main() {
     document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e) => {
         console.log("Setting volume to ", e.target.value, "/100");
         currentSong.volume = parseInt(e.target.value) / 100
-        if (currentSong.volume >0){
-            document.querySelector(".volume>img").src = document.querySelector(".volume>img") .src.replace("mute.svg", "volume.svg")
+        if (currentSong.volume > 0) {
+            document.querySelector(".volume>img").src = document.querySelector(".volume>img").src.replace("mute.svg", "volume.svg")
 
         }
     })
