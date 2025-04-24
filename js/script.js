@@ -77,7 +77,7 @@ const playMusic = (track, pause = false) => {
 }
 
 async function displayAlbums() {
-    let a = await fetch(`/song/`);
+    let a = await fetch(/song/);
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -130,7 +130,7 @@ async function displayAlbums() {
 async function main() {
 
     // get the list of all the songs
-    await getsongs("song/ncs")
+    await getsongs("song/cs")
     playMusic(songs[0], true)
 
     //Display all the albums on the page
